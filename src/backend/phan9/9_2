@@ -1,0 +1,61 @@
+package backend;
+
+/**
+ * Bài 9.2: Class MyNumber extends Number
+ * MyNumber với N phải được extends từ Number.class
+ */
+public class MyNumber<N extends Number> {
+    private N value;
+    
+    // Constructor
+    public MyNumber(N value) {
+        this.value = value;
+    }
+    
+    // Getter và setter
+    public N getValue() {
+        return value;
+    }
+    
+    public void setValue(N value) {
+        this.value = value;
+    }
+    
+    // Lấy giá trị dưới dạng double
+    public double doubleValue() {
+        return value.doubleValue();
+    }
+    
+    // Lấy giá trị dưới dạng int
+    public int intValue() {
+        return value.intValue();
+    }
+    
+    // Lấy giá trị dưới dạng long
+    public long longValue() {
+        return value.longValue();
+    }
+    
+    // Lấy giá trị dưới dạng float
+    public float floatValue() {
+        return value.floatValue();
+    }
+    
+    @Override
+    public String toString() {
+        return value.toString();
+    }
+    
+    // Demo sử dụng
+    public static void main(String[] args) {
+        // Khởi tạo đối tượng MyNumber với kiểu Integer
+        MyNumber<Integer> intNumber = new MyNumber<>(100);
+        System.out.println("Integer value: " + intNumber.getValue());
+        System.out.println("Double value: " + intNumber.doubleValue());
+        
+        // Khởi tạo đối tượng MyNumber với kiểu Double
+        MyNumber<Double> doubleNumber = new MyNumber<>(123.45);
+        System.out.println("Double value: " + doubleNumber.getValue());
+        System.out.println("Int value: " + doubleNumber.intValue());
+    }
+}
