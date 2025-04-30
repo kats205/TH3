@@ -1,0 +1,40 @@
+package backend;
+
+/**
+ * Bài 9.1: Class Salary extends Number
+ * a) Salary với N phải được extends từ Number.class
+ * b) Tạo method để print ra salary hiện tại
+ */
+public class Salary<N extends Number> {
+    private N amount;
+    
+    // Constructor
+    public Salary(N amount) {
+        this.amount = amount;
+    }
+    
+    // Getter và setter
+    public N getAmount() {
+        return amount;
+    }
+    
+    public void setAmount(N amount) {
+        this.amount = amount;
+    }
+    
+    // Method in ra salary hiện tại
+    public void printSalary() {
+        System.out.println("Current Salary: " + amount);
+    }
+    
+    // Demo sử dụng
+    public static void main(String[] args) {
+        // Khởi tạo đối tượng Salary với kiểu Integer
+        Salary<Integer> intSalary = new Salary<>(5000);
+        intSalary.printSalary();
+        
+        // Khởi tạo đối tượng Salary với kiểu Double
+        Salary<Double> doubleSalary = new Salary<>(7500.50);
+        doubleSalary.printSalary();
+    }
+}
