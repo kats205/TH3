@@ -1,0 +1,51 @@
+package UI;
+
+import backend.*;
+import utils.ScannerUtils;
+import java.util.ArrayList;
+
+public class MenuPhan9 {
+    private boolean isRunning = true;
+    private ScannerUtils sc = new ScannerUtils();
+
+    public void run() {
+        while (isRunning)
+            displayMenu();
+    }
+
+    public void displayMenu() {
+        System.out.println("-------Menu Phan 9-------");
+        System.out.println("1. Bai 9.1: Salary Generic Class");
+        System.out.println("2. Bai 9.2: MyNumber Generic Class");
+        System.out.println("3. Bai 9.3: Generic Max Method");
+        System.out.println("4. Bai 9.4: MyMath Generic Class");
+        System.out.println("5. Bai 9.5: ArrayList Cursor");
+        System.out.println("0. Thoat");
+        int choice = sc.inputInRange("Nhập lựa chọn của bạn: ", 0, 5);
+        System.out.println();
+
+        switch (choice) {
+            case 1:
+                demoBai9_1();
+                break;
+            case 2:
+                demoBai9_2();
+                break;
+            case 3:
+                demoBai9_3();
+                break;
+            case 4:
+                demoBai9_4();
+                break;
+            case 5:
+                demoBai9_5();
+                break;
+            case 0:
+                isRunning = false;
+                System.out.println("Đã thoát khỏi chương trình");
+                break;
+            default:
+                System.out.println("Lựa chọn không hợp lệ!");
+        }
+    }
+}
