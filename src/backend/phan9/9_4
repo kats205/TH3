@@ -1,0 +1,64 @@
+package backend;
+
+/**
+ * Bài 9.4: T generic (method & class)
+ * Tạo class MyMath có thể làm việc được với các số int, long, double
+ */
+public class MyMath<T extends Number> {
+    
+    // a) Tính tổng của 2 số
+    public double sum(T a, T b) {
+        return a.doubleValue() + b.doubleValue();
+    }
+    
+    // b) Tính tổng của 3 số
+    public double sum(T a, T b, T c) {
+        return a.doubleValue() + b.doubleValue() + c.doubleValue();
+    }
+    
+    // c) Tính tổng của 4 số
+    public double sum(T a, T b, T c, T d) {
+        return a.doubleValue() + b.doubleValue() + c.doubleValue() + d.doubleValue();
+    }
+    
+    // d) Tính hiệu của 2 số
+    public double subtract(T a, T b) {
+        return a.doubleValue() - b.doubleValue();
+    }
+    
+    // e) Hàm tính số mũ (a,b)
+    public double power(T base, T exponent) {
+        return Math.pow(base.doubleValue(), exponent.doubleValue());
+    }
+    
+    // Demo chương trình
+    public static void main(String[] args) {
+        // Test với Integer
+        MyMath<Integer> intMath = new MyMath<>();
+        System.out.println("Sum of 2 integers: " + intMath.sum(10, 20));
+        System.out.println("Sum of 3 integers: " + intMath.sum(10, 20, 30));
+        System.out.println("Sum of 4 integers: " + intMath.sum(10, 20, 30, 40));
+        System.out.println("Difference of integers: " + intMath.subtract(20, 10));
+        System.out.println("Power of integers: " + intMath.power(2, 3));
+        
+        System.out.println();
+        
+        // Test với Double
+        MyMath<Double> doubleMath = new MyMath<>();
+        System.out.println("Sum of 2 doubles: " + doubleMath.sum(10.5, 20.7));
+        System.out.println("Sum of 3 doubles: " + doubleMath.sum(10.5, 20.7, 30.2));
+        System.out.println("Sum of 4 doubles: " + doubleMath.sum(10.5, 20.7, 30.2, 40.8));
+        System.out.println("Difference of doubles: " + doubleMath.subtract(20.7, 10.5));
+        System.out.println("Power of doubles: " + doubleMath.power(2.5, 3.0));
+        
+        System.out.println();
+        
+        // Test với Long
+        MyMath<Long> longMath = new MyMath<>();
+        System.out.println("Sum of 2 longs: " + longMath.sum(1000L, 2000L));
+        System.out.println("Sum of 3 longs: " + longMath.sum(1000L, 2000L, 3000L));
+        System.out.println("Sum of 4 longs: " + longMath.sum(1000L, 2000L, 3000L, 4000L));
+        System.out.println("Difference of longs: " + longMath.subtract(2000L, 1000L));
+        System.out.println("Power of longs: " + longMath.power(2L, 10L));
+    }
+}
