@@ -1,0 +1,36 @@
+package backend;
+
+/**
+ * Bài 9.3: T generic (method)
+ * Tạo method tính max của 2 số (số nhập vào có thể là float, double, int, long).
+ */
+public class Bai9_3 {
+    
+    // Generic method tìm max của 2 số
+    public static <T extends Number & Comparable<T>> T findMax(T num1, T num2) {
+        return (num1.compareTo(num2) >= 0) ? num1 : num2;
+    }
+    
+    // Demo chương trình
+    public static void main(String[] args) {
+        // Test với Integer
+        Integer int1 = 10;
+        Integer int2 = 20;
+        System.out.println("Max of " + int1 + " and " + int2 + " is: " + findMax(int1, int2));
+        
+        // Test với Double
+        Double double1 = 13.5;
+        Double double2 = 12.8;
+        System.out.println("Max of " + double1 + " and " + double2 + " is: " + findMax(double1, double2));
+        
+        // Test với Float
+        Float float1 = 45.67f;
+        Float float2 = 55.32f;
+        System.out.println("Max of " + float1 + " and " + float2 + " is: " + findMax(float1, float2));
+        
+        // Test với Long
+        Long long1 = 1000L;
+        Long long2 = 2000L;
+        System.out.println("Max of " + long1 + " and " + long2 + " is: " + findMax(long1, long2));
+    }
+}
