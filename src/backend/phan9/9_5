@@ -1,0 +1,117 @@
+package backend;
+
+import java.util.ArrayList;
+
+/**
+ * Bài 9.5: Tạo 1 cursor cho ArrayList
+ * Class này sẽ tạo một cursor để duyệt qua các phần tử trong ArrayList
+ */
+public class ArrayListCursor<T> {
+    private ArrayList<T> list;
+    private int currentPosition = -1;
+    
+    // Constructor
+    public ArrayListCursor(ArrayList<T> list) {
+        this.list = list;
+    }
+    
+    // Di chuyển cursor đến vị trí đầu tiên
+    public void moveToStart() {
+        currentPosition = 0;
+    }
+    
+    // Di chuyển cursor đến vị trí cuối cùng
+    public void moveToEnd() {
+        currentPosition = list.size() - 1;
+    }
+    
+    // Di chuyển cursor đến vị trí tiếp theo
+    public boolean moveToNext() {
+        if (currentPosition < list.size() - 1) {
+            currentPosition++;
+            return true;
+        }
+        return false;
+    }
+    
+    // Di chuyển cursor đến vị trí trước đó
+    public boolean moveToPrevious() {
+        if (currentPosition > 0) {
+            currentPosition--;
+            return true;
+        }
+        return false;
+    }
+    
+    // Lấy phần tử hiện tại
+    public T getCurrentElement() {
+        if (currentPosition >= 0 && currentPosition < list.size()) {
+            return list.get(currentPosition);
+        }
+        return null;
+    }
+    
+    // Kiểm tra xem cursor có đang ở vị trí đầu tiên không
+    public boolean isAtStart() {
+        return currentPosition == 0;
+    }
+    
+    // Kiểm tra xem cursor có đang ở vị trí cuối cùng không
+    public boolean isAtEnd() {
+        return currentPosition == list.size() - 1;
+    }
+    
+    // Lấy vị trí hiện tại của cursor
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+    
+    // Di chuyển cursor đến một vị trí cụ thể
+    public boolean moveToPosition(int position) {
+        if (position >= 0 && position < list.size()) {
+            currentPosition = position;
+            return true;
+        }
+        return false;
+    }
+    
+    // Demo sử dụng
+    public static void main(String[] args) {
+        // Tạo một ArrayList các số nguyên
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+        
+        // Tạo cursor cho ArrayList
+        ArrayListCursor<Integer> cursor = new ArrayListCursor<>(numbers);
+        
+        // Di chuyển đến vị trí đầu tiên
+        cursor.moveToStart();
+        System.out.println("Phần tử đầu tiên: " + cursor.getCurrentElement());
+        
+        // Di chuyển đến vị trí tiếp theo
+        cursor.moveToNext();
+        System.out.println("Phần tử tiếp theo: " + cursor.getCurrentElement());
+        
+        // Di chuyển đến vị trí cuối cùng
+        cursor.moveToEnd();
+        System.out.println("Phần tử cuối cùng: " + cursor.getCurrentElement());
+        
+        // Di chuyển đến vị trí trước đó
+        cursor.moveToPrevious();
+        System.out.println("Phần tử trước đó: " + cursor.getCurrentElement());
+        
+        // Di chuyển đến một vị trí cụ thể
+        cursor.moveToPosition(2);
+        System.out.println("Phần tử ở vị trí 2: " + cursor.getCurrentElement());
+        
+        System.out.println("\nDuyệt qua tất cả các phần tử từ đầu đến cuối:");
+        cursor.moveToStart();
+        do {
+            System.out.println("Vị trí " + cursor.getCurrentPosition() + ": " + cursor.getCurrentElement());
+        } while (cursor.moveToNext());
+    }
+}
